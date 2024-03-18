@@ -6,6 +6,7 @@ const TIME_PER_FRAME_MS = 1000 / 20;
 export class AnimatedTextureElement extends HTMLElement {
   private intervalId: number | null = null;
   public item?: LoadedItem;
+  public size?: number = 64;
 
   constructor() {
     super();
@@ -25,8 +26,8 @@ export class AnimatedTextureElement extends HTMLElement {
     canvas.width = imageSize;
     canvas.height = imageSize;
     canvas.style.imageRendering = "pixelated";
-    canvas.style.width = `64px`;
-    canvas.style.height = `64px`;
+    canvas.style.width = `${this.size}px`;
+    canvas.style.height = `${this.size}px`;
 
     const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) throw new Error("No canvas context");

@@ -1,6 +1,7 @@
 import { TextureLoaderElement } from "../customElements/TextureLoaderElement";
 import { TooltipElement } from "../customElements/TooltipElement";
 import { DataSource, Folder, Item } from "../dataSource/dataSource";
+import { showPreviewModal } from "./showPreviewModal";
 
 export async function displayTexturesForDataSource(
   dataSource: DataSource
@@ -69,6 +70,10 @@ async function displayListOfTextures(dataSource: DataSource) {
       ) as TextureLoaderElement;
       loader.dataSource = dataSource;
       loader.item = item;
+
+      container.addEventListener("click", () => {
+        showPreviewModal(dataSource, item);
+      });
 
       container.append(loader);
       textures.append(container);

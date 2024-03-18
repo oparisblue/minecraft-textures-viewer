@@ -1,15 +1,15 @@
 import { AnimatedTextureElement } from "./customElements/AnimatedTextureElement";
 import { TextureLoaderElement } from "./customElements/TextureLoaderElement";
 import { TooltipElement } from "./customElements/TooltipElement";
-import { GithubDataSource } from "./dataSource/GithubDataSource";
 import { initialiseDataSourceFromHashUrl } from "./initialiseDataSourceFromHashUrl";
 import { addEventListenerToSearchBox } from "./ui/addEventListenerToSearchBox";
 import { addOptionsToCreateDataSources } from "./ui/addOptionsToCreateDataSources";
-import { displayTexturesForDataSource } from "./ui/displayTexturesForDataSource";
+import { hideModalOnKeyPress } from "./ui/showPreviewModal";
 
 window.addEventListener("load", async () => {
   addOptionsToCreateDataSources();
   addEventListenerToSearchBox();
+  hideModalOnKeyPress();
 
   await initialiseDataSourceFromHashUrl();
 });

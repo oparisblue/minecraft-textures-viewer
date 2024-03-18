@@ -152,3 +152,22 @@ main {
   border: solid 1px #111;
   box-shadow: 0 2px 40px #0008;
 }
+
+.overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0008;
+}
+
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #212121;
+  transform: translate(-50%, -50%);
+}
