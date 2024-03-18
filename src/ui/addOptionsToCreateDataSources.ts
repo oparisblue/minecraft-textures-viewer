@@ -1,4 +1,5 @@
 import { GithubDataSource } from "../dataSource/GithubDataSource";
+import { LocalDataSource } from "../dataSource/LocalDataSource";
 import { displayTexturesForDataSource } from "./displayTexturesForDataSource";
 
 export function addOptionsToCreateDataSources() {
@@ -10,7 +11,12 @@ export function addOptionsToCreateDataSources() {
   githubMenuItem.addEventListener("click", openFromGithub);
   githubMenuItem.innerText = "Open from GitHub";
 
+  const localMenuItem = document.createElement("div");
+  localMenuItem.addEventListener("click", openFromLocal);
+  localMenuItem.innerText = "Open from your computer";
+
   container.append(githubMenuItem);
+  container.append(localMenuItem);
 }
 
 async function openFromGithub() {
@@ -34,4 +40,16 @@ async function openFromGithub() {
   displayTexturesForDataSource(
     new GithubDataSource(username, repo, branch, "")
   );
+}
+
+async function openFromLocal() {
+  if (!window.showDirectoryPicker) {
+    alert("Your browser does not support selecting directories. Try Chrome.");
+    return;
+  }
+
+  const directory = await window.showDirectoryPicker();
+
+  window.location.hash = "";
+  displayTexturesForDataSource(new LocalDataSource(directory));
 }

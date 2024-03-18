@@ -55,7 +55,11 @@ async function displayListOfTextures(dataSource: DataSource) {
   for (const folder of subfolders) {
     const searchableFolderName = folder.name.toString().trim();
 
-    for (const [name, item] of folder.items) {
+    const sortedItems = [...folder.items.entries()].sort((a, b) =>
+      a[0].localeCompare(b[0])
+    );
+
+    for (const [name, item] of sortedItems) {
       const searchableItemName = name.toLowerCase().trim();
 
       const container = document.createElement("tool-tip") as TooltipElement;
