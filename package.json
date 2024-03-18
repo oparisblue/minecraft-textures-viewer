@@ -1,0 +1,11 @@
+{
+  "name": "minecraft-textures-viewer",
+  "license": "MIT",
+  "scripts": {
+    "start": "esbuild src/app.ts src/index.html src/app.css --bundle --minify --loader:.html=copy --outdir=build --watch --serve",
+    "build": "esbuild src/app.ts src/index.html src/app.css --bundle --minify --loader:.html=copy --outdir=build"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.2"
+  }
+}
