@@ -14,6 +14,6 @@ Try it online with your own files at https://oparisblue.github.io/minecraft-text
 Just select the menu at the top-left, and choose "Open from your computer". Alternatively, there are some fantastic texture repos which exist here on GitHub, and you can use this to generate a gallery view of them, e.g:
 
 - [Gallery view of malcolmriley/unused-textures](https://oparisblue.github.io/minecraft-textures-viewer/#github/malcolmriley/unused-textures/master) (github [here](https://github.com/malcolmriley/unused-textures))
-- [Gallery view of Foreck1/foreck-textures](http://127.0.0.1:8000/#github/Foreck1/foreck-textures/main) (github [here](https://github.com/Foreck1/foreck-textures))
-- [Gallery view of Futureazoo/TextureRepository](http://127.0.0.1:8000/#github/Futureazoo/TextureRepository/master) (github [here](https://github.com/Futureazoo/TextureRepository))
+- [Gallery view of Foreck1/foreck-textures](https://oparisblue.github.io/#github/Foreck1/foreck-textures/main) (github [here](https://github.com/Foreck1/foreck-textures))
+- [Gallery view of Futureazoo/TextureRepository](https://oparisblue.github.io/#github/Futureazoo/TextureRepository/master) (github [here](https://github.com/Futureazoo/TextureRepository))
 - ...any many others --- you can select "Open from GitHub" to open any other similar texture repo with this tool.
