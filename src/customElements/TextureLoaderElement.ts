@@ -29,11 +29,6 @@ export class TextureLoaderElement extends HTMLElement {
   }
 
   private getElementForItem(item: LoadedItem) {
-    if (this.item?.imagePath.includes("DiamondCoin")) {
-      console.log(this.item);
-      console.log(item.image.src);
-    }
-
     if (item.animation) {
       const animatedTexture = document.createElement(
         "animated-texture"
