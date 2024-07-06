@@ -29,6 +29,11 @@ export class TextureLoaderElement extends HTMLElement {
   }
 
   private getElementForItem(item: LoadedItem) {
+    if (this.item?.imagePath.includes("DiamondCoin")) {
+      console.log(this.item);
+      console.log(item.image.src);
+    }
+
     if (item.animation) {
       const animatedTexture = document.createElement(
         "animated-texture"
@@ -40,7 +45,7 @@ export class TextureLoaderElement extends HTMLElement {
     }
 
     const staticTexture = document.createElement("div");
-    staticTexture.style.backgroundImage = `url(${item.image.src})`;
+    staticTexture.style.backgroundImage = `url("${item.image.src}")`;
     staticTexture.style.backgroundSize = "contain";
     staticTexture.style.backgroundRepeat = "no-repeat";
     staticTexture.style.backgroundPosition = "center";
