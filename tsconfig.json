@@ -1,8 +1,0 @@
-{
-  "compilerOptions": {
-    "strict": true,
-    "lib": ["ESNext", "DOM"],
-    "experimentalDecorators": true,
-    "downlevelIteration": true
-  }
-}
