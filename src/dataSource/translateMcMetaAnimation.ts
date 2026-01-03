@@ -19,7 +19,8 @@ export function translateMcMetaAnimation(
     interpolate,
     frames: frames
       ? processFramesArray(frames, baseFrameTime)
-      : getSimpleIncrementedFrames(baseNumberOfFrames, baseFrameTime)
+      : getSimpleIncrementedFrames(baseNumberOfFrames, baseFrameTime),
+    rawJson: JSON.stringify(mcMetaJson, null, 2)
   };
 }
 

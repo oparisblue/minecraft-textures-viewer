@@ -5,6 +5,7 @@ export class TextureLoaderElement extends HTMLElement {
   public size?: number = 64;
   public item?: Item;
   public dataSource?: DataSource;
+  private loadedItem?: LoadedItem;
 
   constructor() {
     super();
@@ -22,9 +23,9 @@ export class TextureLoaderElement extends HTMLElement {
       throw new Error("item and data source are required");
     }
 
-    const loadedItem = await this.dataSource.loadItem(this.item);
+    this.loadedItem = await this.dataSource.loadItem(this.item);
 
-    const element = this.getElementForItem(loadedItem);
+    const element = this.getElementForItem(this.loadedItem);
     container.append(element);
   }
 
@@ -48,5 +49,30 @@ export class TextureLoaderElement extends HTMLElement {
     staticTexture.style.width = `${this.size}px`;
     staticTexture.style.height = `${this.size}px`;
     return staticTexture;
+  }
+
+  public async downloadItem() {
+    if (!this.loadedItem) return;
+
+    const imageName = this.item?.imagePath.split("/").at(-1) ?? "texture.png";
+
+    const image = await fetch(this.loadedItem.image.src);
+    const blob = await image.blob();
+    this.downloadBlob(blob, imageName);
+
+    if (this.loadedItem.animation) {
+      const mcMetaJson = new Blob([this.loadedItem.animation.rawJson], {
+        type: "application/json"
+      });
+      this.downloadBlob(mcMetaJson, `${imageName}.mcmeta`);
+    }
+  }
+
+  private downloadBlob(blob: Blob, name: string) {
+    const blobUrl = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = blobUrl;
+    link.download = name;
+    link.click();
   }
 }

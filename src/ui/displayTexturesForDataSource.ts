@@ -53,7 +53,7 @@ async function displayListOfTextures(dataSource: DataSource) {
   const textures = document.createDocumentFragment();
 
   for (const folder of subfolders) {
-    const searchableFolderName = folder.name.toString().trim();
+    const searchableFolderName = folder.name.toLowerCase().trim();
 
     const sortedItems = [...folder.items.entries()].sort((a, b) =>
       a[0].localeCompare(b[0])
@@ -62,8 +62,10 @@ async function displayListOfTextures(dataSource: DataSource) {
     for (const [name, item] of sortedItems) {
       const searchableItemName = name.toLowerCase().trim();
 
+      const path = `${folder.name}/${name}`;
+
       const container = document.createElement("tool-tip") as TooltipElement;
-      container.text = `${folder.name}/${name}`;
+      container.text = path;
       container.setAttribute(
         "data-searchable-name",
         `${searchableFolderName}/${searchableItemName}`
@@ -75,8 +77,17 @@ async function displayListOfTextures(dataSource: DataSource) {
       loader.dataSource = dataSource;
       loader.item = item;
 
-      container.addEventListener("click", () => {
-        showPreviewModal(dataSource, item);
+      container.addEventListener("click", (event) => {
+        if (event.ctrlKey || event.metaKey) {
+          loader.downloadItem();
+          return;
+        }
+
+        showPreviewModal(dataSource, item, path);
+      });
+      container.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        showPreviewModal(dataSource, item, path);
       });
 
       container.append(loader);

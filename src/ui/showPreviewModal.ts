@@ -1,7 +1,11 @@
 import { TextureLoaderElement } from "../customElements/TextureLoaderElement";
 import { DataSource, Item } from "../dataSource/dataSource";
 
-export function showPreviewModal(dataSource: DataSource, item: Item) {
+export function showPreviewModal(
+  dataSource: DataSource,
+  item: Item,
+  path: string
+) {
   const overlay = document.createElement("div");
   overlay.classList.add("overlay");
 
@@ -11,10 +15,24 @@ export function showPreviewModal(dataSource: DataSource, item: Item) {
   const loader = document.createElement(
     "texture-loader"
   ) as TextureLoaderElement;
-  loader.size = Math.min(window.innerHeight, window.innerWidth) - 40;
+  loader.size = Math.min(window.innerHeight, window.innerWidth) - 120;
   loader.dataSource = dataSource;
   loader.item = item;
 
+  const saveButton = document.createElement("div");
+  saveButton.classList.add("saveButton");
+  saveButton.innerText = "Download";
+  saveButton.addEventListener("click", async (event) => {
+    event.stopPropagation();
+    loader.downloadItem();
+  });
+
+  const header = document.createElement("div");
+  header.classList.add("modalHeader");
+  header.append(document.createTextNode(path));
+  header.append(saveButton);
+
+  modal.append(header);
   modal.append(loader);
 
   overlay.addEventListener("click", hideModal);

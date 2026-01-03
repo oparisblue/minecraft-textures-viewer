@@ -1,6 +1,7 @@
 export interface McMetaAnimation {
   interpolate: boolean;
   frames: AnimationFrame[];
+  rawJson: string;
 }
 
 export interface AnimationFrame {

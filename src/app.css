@@ -146,7 +146,8 @@ main {
 }
 
 .tooltip,
-#dataSourceMenu {
+#dataSourceMenu,
+.modal {
   background-color: #1118;
   backdrop-filter: blur(40px);
   border: solid 1px #111;
@@ -168,6 +169,20 @@ main {
   top: 50%;
   padding: 10px;
   border-radius: 4px;
-  background-color: #212121;
   transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .modalHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .saveButton {
+      color: #5b9454;
+      cursor: pointer;
+    }
+  }
 }
