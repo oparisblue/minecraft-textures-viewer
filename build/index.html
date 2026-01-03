@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="app.css" />
+    <script src="app.js"></script>
+    <title>Texture Viewer</title>
+  </head>
+  <body>
+    <main>
+      <nav>
+        <div class="dataSourceMenuContainer">
+          📁
+          <div class="dataSource">
+            <div>Click here to open a project</div>
+            <div>Open from GitHub or your computer</div>
+          </div>
+          <div id="dataSourceMenu">
+            <div id="dataSourceMenuExtraItems"></div>
+            <div id="dataSourceMenuOpenItems"></div>
+          </div>
+        </div>
+        <div class="flexSpace"></div>
+        <input
+          type="search"
+          id="search"
+          placeholder="Search by name or folder (e.g. items, blocks, etc)"
+        />
+      </nav>
+      <div id="textures"></div>
+    </main>
+  </body>
+</html>
